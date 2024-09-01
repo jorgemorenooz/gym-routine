@@ -158,7 +158,7 @@
         const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         let currentDayIndex = new Date().getDay();
         
-         function displayRoutine(dayIndex) {
+        function displayRoutine(dayIndex) {
             const todayRoutine = routine[days[dayIndex]];
             const routineDiv = document.getElementById("routine");
             const routineDay = document.getElementById("routine_day");
@@ -169,21 +169,24 @@
                                 <tr>
                                     <th>Muscle Group</th>
                                     <th>Exercise</th>
+                                    <th>Weight (kg)</th>
                                     <th>Sets</th>
                                     <th>Reps</th>
                                     <th>Rest</th>
                                 </tr>`;
                 
-                todayRoutine.forEach(exercise => {
-                    const colorClass = colors[exercise.muscleGroup] || "";
-                    table += `<tr>
-                                <td class="${colorClass}">${exercise.muscleGroup}</td>
-                                <td>${exercise.exercise}</td>
-                                <td>${exercise.sets}</td>
-                                <td>${exercise.reps}</td>
-                                <td>${exercise.rest}</td>
-                              </tr>`;
-                });
+                    todayRoutine.forEach((exercise, index) => {
+                        const colorClass = colors[exercise.muscleGroup] || "";
+                        const savedWeight = localStorage.getItem(`weight-${exercise.exercise}`) || "";
+                        table += `<tr>
+                                    <td class="${colorClass}">${exercise.muscleGroup}</td>
+                                    <td>${exercise.exercise}</td>
+                                    <td><input type="number" id="weight-${index}" placeholder="Weight" value="${savedWeight}" onchange="updateWeight('${exercise.exercise}', this.value)" /></td>
+                                    <td>${exercise.sets}</td>
+                                    <td>${exercise.reps}</td>
+                                    <td>${exercise.rest}</td>
+                                </tr>`;
+                    });
                 
                 table += `</table>`;
                 routineDiv.innerHTML = table;
@@ -200,6 +203,10 @@
                 currentDayIndex = (currentDayIndex + direction + 7) % 7;
             }
             displayRoutine(currentDayIndex);
+        }
+
+        function updateWeight(exerciseName, weight) {
+            localStorage.setItem(`weight-${exerciseName}`, weight);
         }
         
         // Display today's routine on page load
