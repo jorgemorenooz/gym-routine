@@ -57,6 +57,7 @@
     
     <div class="slider-controls">
         <button onclick="changeDay(-1)">Previous Day</button>
+        <button onclick="changeDay(null)">Today</button>
         <button onclick="changeDay(1)">Next Day</button>
     </div>
     
@@ -64,29 +65,54 @@
     
     <script>
         const routine = {
-            "Sunday": [
-                { muscleGroup: "Legs", exercise: "Barbell Squat", sets: 4, reps: "8-10", rest: "60-90 seconds" },
-                { muscleGroup: "Legs", exercise: "Leg Press", sets: 4, reps: "10-12", rest: "60 seconds" },
-                { muscleGroup: "Legs", exercise: "Lunges", sets: 3, reps: "12 per leg", rest: "60 seconds" },
-                { muscleGroup: "Legs", exercise: "Leg Curl", sets: 3, reps: "12-15", rest: "60 seconds" },
-                { muscleGroup: "Legs", exercise: "Calf Raise", sets: 4, reps: "15-20", rest: "45 seconds" },
-            ],
             "Monday": [
-                { muscleGroup: "Back", exercise: "Pull-Ups", sets: 4, reps: "8-10", rest: "60-90 seconds" },
-                { muscleGroup: "Back", exercise: "Barbell Row", sets: 4, reps: "10-12", rest: "60 seconds" },
-                { muscleGroup: "Back", exercise: "Lat Pulldown", sets: 3, reps: "12", rest: "60 seconds" },
-                { muscleGroup: "Back", exercise: "Romanian Deadlift", sets: 3, reps: "10", rest: "60-90 seconds" },
-                { muscleGroup: "Triceps", exercise: "Dips", sets: 3, reps: "10-12", rest: "60 seconds" },
-                { muscleGroup: "Triceps", exercise: "Tricep Extensions", sets: 3, reps: "12-15", rest: "45 seconds" },
+                { muscleGroup: "Espalda", exercise: "Peso Muerto", sets: 4, reps: "8-10", rest: "60-90 seconds" },
+                { muscleGroup: "Espalda", exercise: "Remo con Barra	", sets: 4, reps: "10-12", rest: "60 seconds" },
+                { muscleGroup: "Espalda", exercise: "Jalón al Pecho", sets: 4, reps: "10-12", rest: "60 seconds" },
+                { muscleGroup: "Espalda", exercise: "Remo en Máquina", sets: 3, reps: "12", rest: "60 seconds" },
+                { muscleGroup: "Triceps", exercise: "Extensión de Tríceps en Polea", sets: 4, reps: "12-15", rest: "60 seconds" },
+                { muscleGroup: "Triceps", exercise: "Press Francés con Barra Z", sets: 3, reps: "10-12", rest: "60 seconds" },
+                { muscleGroup: "Triceps", exercise: "Fondos en Banco", sets: 3, reps: "12-15", rest: "60 seconds" },
             ],
             "Tuesday": [
-                { muscleGroup: "Legs", exercise: "Barbell Squat", sets: 4, reps: "8-10", rest: "60-90 seconds" },
-                { muscleGroup: "Legs", exercise: "Leg Press", sets: 4, reps: "10-12", rest: "60 seconds" },
-                { muscleGroup: "Legs", exercise: "Lunges", sets: 3, reps: "12 per leg", rest: "60 seconds" },
-                { muscleGroup: "Legs", exercise: "Leg Curl", sets: 3, reps: "12-15", rest: "60 seconds" },
-                { muscleGroup: "Legs", exercise: "Calf Raise", sets: 4, reps: "15-20", rest: "45 seconds" },
+                { muscleGroup: "Piernas", exercise: "Sentadillas con Barra", sets: 4, reps: "8-10", rest: "60-90 seconds" },
+                { muscleGroup: "Piernas", exercise: "Prensa de Piernas", sets: 4, reps: "10-12", rest: "60 seconds" },
+                { muscleGroup: "Piernas", exercise: "Extensiones de Cuádriceps en Máquina", sets: 4, reps: "12-15", rest: "60 seconds" },
+                { muscleGroup: "Piernas", exercise: "Curl de Piernas en Máquina", sets: 4, reps: "12-15", rest: "60 seconds" },
+                { muscleGroup: "Piernas", exercise: "Elevación de Gemelos en Máquina", sets: 4, reps: "15-20", rest: "45 seconds" }
+            ],
+            "Wednesday": [
+                { muscleGroup: "Pecho", exercise: "Press de Banca", sets: 4, reps: "8-10", rest: "60-90 seconds" },
+                { muscleGroup: "Pecho", exercise: "Press Inclinado con Mancuernas", sets: 4, reps: "10-12", rest: "60 seconds" },
+                { muscleGroup: "Pecho", exercise: "Press en Máquina", sets: 4, reps: "10-12", rest: "60 seconds" },
+                { muscleGroup: "Pecho", exercise: "Aperturas en Máquina", sets: 3, reps: "12-15", rest: "60 seconds" },
+                { muscleGroup: "Bíceps", exercise: "Curl con Barra", sets: 4, reps: "8-10", rest: "60 seconds" },
+                { muscleGroup: "Bíceps", exercise: "Curl con Mancuernas en Banco Inclinado", sets: 4, reps: "10-12", rest: "60 seconds" },
+                { muscleGroup: "Bíceps", exercise: "Curl de Bíceps en Máquina Predicador", sets: 3, reps: "12-15", rest: "60 seconds" }
+            ],
+            "Thursday": [
+                { muscleGroup: "Hombros", exercise: "Press Militar con Barra o Mancuernas", sets: 4, reps: "8-10", rest: "60-90 seconds" },
+                { muscleGroup: "Hombros", exercise: "Elevaciones Laterales", sets: 4, reps: "12-15", rest: "60 seconds" },
+                { muscleGroup: "Hombros", exercise: "Elevaciones Frontales con Mancuernas", sets: 3, reps: "12", rest: "60 seconds" },
+                { muscleGroup: "Hombros", exercise: "Remo al Mentón con Barra Z", sets: 3, reps: "10-12", rest: "60 seconds" },
+                { muscleGroup: "Abs", exercise: "Crunches en Máquina", sets: 4, reps: "15-20", rest: "60 seconds" },
+                { muscleGroup: "Abs", exercise: "Elevación de Piernas en Banco", sets: 3, reps: "15-20", rest: "60 seconds" }
+            ],
+            "Friday": [
+                { muscleGroup: "Piernas", exercise: "Peso Muerto Rumano", sets: 4, reps: "8-10", rest: "60-90 seconds" },
+                { muscleGroup: "Piernas", exercise: "Hip Thrust con Barra", sets: 4, reps: "10-12", rest: "60 seconds" },
+                { muscleGroup: "Piernas", exercise: "Curl de Piernas en Máquina", sets: 4, reps: "12", rest: "60 seconds" },
+                { muscleGroup: "Piernas", exercise: "Zancadas con Barra o Mancuernas", sets: 3, reps: "12 por pierna", rest: "60 seconds" },
+                { muscleGroup: "Piernas", exercise: "Elevación de Gemelos en Máquina", sets: 4, reps: "15-20", rest: "45 seconds" }
+            ],
+            "Saturday": [
+                { muscleGroup: "Cardio", exercise: "Ciclismo o Caminata en Cinta", sets: "-", reps: "30-45 minutes", rest: "-" },
+                { muscleGroup: "Core", exercise: "Russian Twists con Peso", sets: 3, reps: "20 por lado", rest: "60 seconds" },
+                { muscleGroup: "Core", exercise: "Plancha en Máquina de Abdominales", sets: 4, reps: "1 minuto", rest: "60 seconds" }
+            ],
+            "Sunday": [
+                { muscleGroup: "Descanso", exercise: "Descanso Completo", sets: "-", reps: "-", rest: "-" }
             ]
-            // Add other days as needed
         };
         
         const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -126,7 +152,12 @@
         }
         
         function changeDay(direction) {
-            currentDayIndex = (currentDayIndex + direction + 7) % 7;
+            if(!direction){
+                currentDayIndex = new Date().getDay();
+            }
+            else{
+                currentDayIndex = (currentDayIndex + direction + 7) % 7;
+            }
             displayRoutine(currentDayIndex);
         }
         
