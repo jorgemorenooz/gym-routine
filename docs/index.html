@@ -49,6 +49,13 @@
         .slider-controls button:hover {
             background-color: #555;
         }
+        .color-red { color: red; }
+        .color-blue { color: blue; }
+        .color-green { color: green; }
+        .color-yellow { color: yellow; }
+        .color-orange { color: orange; }
+        .color-purple { color: purple; }
+        .color-black { color: black; }
     </style>
 </head>
 <body>
@@ -115,15 +122,27 @@
             ]
         };
         
+        const colors = {
+            "Pecho": "color-red",
+            "Espalda": "color-blue",
+            "Piernas": "color-green",
+            "Bíceps": "color-yellow",
+            "Tríceps": "color-orange",
+            "Hombros": "color-purple",
+            "Abs": "color-black",
+            "Cardio": "color-black",
+            "Core	": "color-black",
+        };
+
         const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         let currentDayIndex = new Date().getDay();
         
-        function displayRoutine(dayIndex) {
+         function displayRoutine(dayIndex) {
             const todayRoutine = routine[days[dayIndex]];
             const routineDiv = document.getElementById("routine");
             const routineDay = document.getElementById("routine_day");
             routineDay.innerHTML = days[dayIndex];
-            
+
             if (todayRoutine) {
                 let table = `<table>
                                 <tr>
@@ -135,8 +154,9 @@
                                 </tr>`;
                 
                 todayRoutine.forEach(exercise => {
+                    const colorClass = colors[exercise.muscleGroup] || "";
                     table += `<tr>
-                                <td>${exercise.muscleGroup}</td>
+                                <td class="${colorClass}">${exercise.muscleGroup}</td>
                                 <td>${exercise.exercise}</td>
                                 <td>${exercise.sets}</td>
                                 <td>${exercise.reps}</td>
